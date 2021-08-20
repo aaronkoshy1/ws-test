@@ -1,0 +1,35 @@
+version: '3'
+services:
+  web:
+    volumes:
+      - '../../../app:/opt/node_app/app'
+      - '../../../lib:/opt/node_app/lib'
+      - '../../../views:/opt/node_app/views'
+      - '../../../public:/opt/node_app/public'
+      - '../../../extensions:/opt/node_app/extensions'
+    ports:
+      - '8100:3000'
+    restart: always
+    stdin_open: true
+    tty: true
+    build:
+      context: ../../../
+      dockerfile: .wappler/targets/Development/web/Dockerfile
+    depends_on:
+      - db
+  db:
+    image: 'mysql:8.0'
+    environment:
+      MYSQL_ROOT_PASSWORD: ih8OmyDw
+      MYSQL_DATABASE: webapp
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: 6HykaqfJ
+    volumes:
+      - './db_init:/docker-entrypoint-initdb.d'
+    ports:
+      - '9906:3306'
+    restart: always
+    command:
+      - '--character-set-server=utf8mb4'
+      - '--collation-server=utf8mb4_unicode_ci'
+      - '--default-authentication-plugin=mysql_native_password'

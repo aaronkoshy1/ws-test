@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "$_POST": [
+      {
+        "type": "text",
+        "options": {
+          "rules": {
+            "core:required": {},
+            "core:email": {}
+          }
+        },
+        "name": "email"
+      },
+      {
+        "type": "text",
+        "options": {
+          "rules": {
+            "core:required": {},
+            "core:pattern": {
+              "param": "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$",
+              "message": "Must have uppercase, lowercase, a number, and a special character."
+            }
+          }
+        },
+        "name": "password"
+      },
+      {
+        "type": "text",
+        "options": {
+          "rules": {
+            "core:required": {},
+            "core:equalTo": {
+              "param": "password"
+            }
+          }
+        },
+        "name": "pass_confirm"
+      }
+    ]
+  },
+  "exec": {
+    "steps": [
+      {
+        "name": "email",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{$_POST.email.lowercase()}}"
+        }
+      },
+      {
+        "name": "validate",
+        "module": "validator",
+        "action": "validate",
+        "options": {
+          "data": [
+            {
+              "name": "validate_1",
+              "value": "",
+              "rules": {
+                "db:notexists": {
+                  "param": {
+                    "connection": "db",
+                    "table": "cars",
+                    "column": "id"
+                  },
+                  "message": "Email is in use."
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "salt",
+        "module": "core",
+        "action": "setvalue",
+        "options": {
+          "value": "{{TIMESTAMP.md5(TIMESTAMP).substr(0, 15)}}"
+        }
+      },
+      {
+        "name": "insert",
+        "module": "dbupdater",
+        "action": "insert",
+        "options": {
+          "connection": "db",
+          "sql": {
+            "type": "insert",
+            "values": [
+              {
+                "table": "users",
+                "column": "email",
+                "type": "text",
+                "value": "{{email}}"
+              },
+              {
+                "table": "users",
+                "column": "pass_hash",
+                "type": "text",
+                "value": "{{$_POST.password.sha512(salt)}}"
+              },
+              {
+                "table": "users",
+                "column": "pass_salt",
+                "type": "text",
+                "value": "{{salt}}"
+              },
+              {
+                "table": "users",
+                "column": "most_recent_login",
+                "type": "datetime",
+                "value": "{{NOW}}"
+              }
+            ],
+            "table": "users",
+            "returning": "user_id",
+            "query": "INSERT INTO users\n(email, pass_hash, pass_salt, most_recent_login) VALUES (:P1 /* {{email}} */, :P2 /* {{$_POST.password.sha512(salt)}} */, :P3 /* {{salt}} */, :P4 /* {{NOW}} */)",
+            "params": [
+              {
+                "name": ":P1",
+                "type": "expression",
+                "value": "{{email}}"
+              },
+              {
+                "name": ":P2",
+                "type": "expression",
+                "value": "{{$_POST.password.sha512(salt)}}"
+              },
+              {
+                "name": ":P3",
+                "type": "expression",
+                "value": "{{salt}}"
+              },
+              {
+                "name": ":P4",
+                "type": "expression",
+                "value": "{{NOW}}"
+              }
+            ]
+          }
+        },
+        "meta": [
+          {
+            "name": "identity",
+            "type": "text"
+          },
+          {
+            "name": "affected",
+            "type": "number"
+          }
+        ]
+      }
+    ]
+  }
+}

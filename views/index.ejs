@@ -1,0 +1,53 @@
+<dmx-notifications id="notifies1" class="style1"></dmx-notifications>
+<header class="sticky-top">
+    <div class="container">
+        <div class="row">
+            <div class="col"><img width="50" height="50" class="rounded-circle"></div>
+            <div class="col text-end">
+
+                <button id="btn1" class="btn w-auto"><i class="fas fa-align-justify fa-2x"></i></button>
+            </div>
+        </div>
+    </div>
+</header><!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="index" appConnect="local" components="{dmxAnimateCSS:{},dmxValidator:{},dmxNotifications:{}}" -->
+
+
+<div class="container style2">
+    <form id="register1" method="post" is="dmx-serverconnect-form" action="api/security/user_register" credentials dmx-on:success="notifies1.success('success')" dmx-on:error="notifies1.danger('Uh oh')" dmx-on:invalid="notifies1.info('what the')">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-7 col-md-5 text-center">
+                <div class="fdb-box fdb-touch">
+                    <div class="row">
+                        <div class="col">
+                            <h1>Register</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mt-4">
+                            <input type="text" id="inp_username" name="username" class="form-control" placeholder="Name">
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <input type="text" id="inp_email" name="email" class="form-control" placeholder="Email" required="" data-rule-email="">
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <input type="password" id="inp_password" name="password" class="form-control mb-1" placeholder="Password" required="" data-rule-pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&amp;*-]).{8,15}$">
+                            <input id="inp_password_confirm" name="pass_confirm" type="password" class="form-control" placeholder="Confirm Password" required="" data-rule-equalto="password">
+                            <p class="text-end"><a href="#">Already have an account?</a></p>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col">
+                            <button id="register1_submit" class="btn btn-lg btn-primary w-100" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div is="dmx-animate" id="animate1" showEffect="bounce" hideEffect="bounce"></div>
+<meta name="ac:route" content="/">

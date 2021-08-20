@@ -1,0 +1,14 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="posts" appConnect="local" components="{dmxDatastore:{}}" -->
+<meta name="ac:route" content="/posts">
+<dmx-serverconnect id="serverconnect1" url="api/social/get_posts"></dmx-serverconnect>
+<div class="container wappler-block">
+    <div class="row" is="dmx-repeat" id="repeat1" dmx-bind:repeat="serverconnect1.data">
+        <div class="col">
+            <p>{{serverconnect1.data.query[0].author}}</p>
+            <p>{{serverconnect1.data.query[0].description}}</p><img dmx-bind:src="serverconnect1.data.query[0].image" height="500" class="img-fluid">
+
+
+        </div>
+    </div>
+</div>
+<!-- New Wappler Page -->

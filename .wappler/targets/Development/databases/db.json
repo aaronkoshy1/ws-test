@@ -1,0 +1,240 @@
+{
+  "direct": true,
+  "type": "mysql",
+  "connection": {
+    "host": "localhost",
+    "port": 9906,
+    "user": "root",
+    "password": "ih8OmyDw",
+    "database": "webapp"
+  },
+  "schema": {
+    "tables": {
+      "images": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8_general_ci"
+        },
+        "columns": {
+          "id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "image": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "description": {
+            "db": {
+              "type": "text",
+              "maxLength": 65535,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "category": {
+            "db": {
+              "type": "string",
+              "maxLength": 12,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "author": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "date": {
+            "db": {
+              "type": "date",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        }
+      },
+      "users": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8_general_ci"
+        },
+        "columns": {
+          "user_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "first_name": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "last_name": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "gender": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "email": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "company": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "avatar": {
+            "db": {
+              "type": "string",
+              "maxLength": 100,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "pass_hash": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "pass_salt": {
+            "db": {
+              "type": "string",
+              "maxLength": 15,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "role": {
+            "db": {
+              "type": "string",
+              "maxLength": 25,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "most_recent_login": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": true
+            }
+          }
+        }
+      },
+      "cars": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8_general_ci"
+        },
+        "columns": {
+          "id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "make": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "model": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          },
+          "year": {
+            "db": {
+              "type": "string",
+              "maxLength": 50,
+              "primary": false,
+              "nullable": true
+            }
+          }
+        }
+      },
+      "countries": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8_general_ci"
+        },
+        "columns": {
+          "id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "country_code": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 2,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "country_name": {
+            "db": {
+              "type": "string",
+              "default": "",
+              "maxLength": 100,
+              "primary": false,
+              "nullable": false
+            }
+          }
+        }
+      }
+    },
+    "views": {}
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "$_PARAM": [
+      {
+        "type": "text",
+        "name": "username"
+      },
+      {
+        "type": "text",
+        "name": "message"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "emit",
+      "module": "sockets",
+      "action": "emit",
+      "options": {
+        "eventName": "send_message",
+        "params": {
+          "username": "{{$_PARAM.username}}",
+          "message": "{{$_PARAM.message}}"
+        }
+      }
+    }
+  }
+}

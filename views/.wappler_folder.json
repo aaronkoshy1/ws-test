@@ -1,0 +1,10 @@
+{
+  "chat.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  },
+  "posts.ejs": {
+    "layoutPage": "main",
+    "description": ""
+  }
+}

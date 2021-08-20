@@ -1,0 +1,15 @@
+{
+  "name": "db",
+  "module": "dbconnector",
+  "action": "connect",
+  "options": {
+    "client": "mysql",
+    "connection": {
+      "host": "db",
+      "port": 3306,
+      "user": "db_user",
+      "password": "6HykaqfJ",
+      "database": "webapp"
+    }
+  }
+}

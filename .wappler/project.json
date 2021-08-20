@@ -1,0 +1,48 @@
+{
+  "projectName": "WebApp",
+  "styleFile": "/css/style.css",
+  "assetsFolder": "/assets",
+  "designFramework": "bootstrap5",
+  "frameworks": [
+    {
+      "name": "fontawesome_5",
+      "type": "cdn"
+    },
+    {
+      "name": "bootstrap5",
+      "type": "local"
+    },
+    {
+      "name": "appConnect",
+      "type": "local"
+    }
+  ],
+  "hostingType": "docker",
+  "projectServerModel": "node",
+  "webRootFolder": "/public",
+  "useRouting": true,
+  "addBase": true,
+  "routingHandler": "node",
+  "targets": [
+    {
+      "name": "Development",
+      "remoteURL": "http://localhost:8100",
+      "webServerPort": 8100,
+      "webServerLang": "node",
+      "targetType": "docker",
+      "webServer": "node",
+      "NodeVersion": "12",
+      "databaseType": "mysql",
+      "databasePort": 9906,
+      "mySQLVersion": "8.0.x",
+      "mySQL_rootPassword": "ih8OmyDw",
+      "mySQL_databaseName": "webapp",
+      "mySQL_username": "db_user",
+      "mySQL_password": "6HykaqfJ",
+      "dockerTimezone": "Etc/UTC"
+    }
+  ],
+  "activeTarget": "Development",
+  "projectType": "web",
+  "activeGitRemote": "Worksmart"
+}

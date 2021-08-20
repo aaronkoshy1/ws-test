@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "page": "index",
+      "routeType": "page",
+      "layout": "main"
+    },
+    {
+      "path": "/chat",
+      "page": "chat",
+      "layout": "main"
+    },
+    {
+      "path": "/posts",
+      "page": "posts",
+      "layout": "main"
+    }
+  ]
+}

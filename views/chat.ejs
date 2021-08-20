@@ -1,0 +1,14 @@
+<!-- Wappler include head-page="layouts/main" fontawesome_5="cdn" bootstrap5="local" is="dmx-app" id="chat" appConnect="local" components="{dmxDatastore:{},dmxSockets:{},dmxStateManagement:{}}" -->
+<meta name="ac:route" content="/posts">
+<dmx-session-manager id="session1"></dmx-session-manager>
+<dmx-socket id="socket1" dmx-on:message.send_message="chat_messages.insert({chat_user: $event.username, chat_message: $event.message})"></dmx-socket>
+<dmx-datastore id="chat_messages"></dmx-datastore>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <input id="text1" name="text1" type="text" class="form-control">
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "$_GET": [
+      {
+        "type": "text",
+        "name": "sort"
+      },
+      {
+        "type": "text",
+        "name": "dir"
+      }
+    ]
+  },
+  "exec": {
+    "steps": {
+      "name": "query",
+      "module": "dbconnector",
+      "action": "select",
+      "options": {
+        "connection": "db",
+        "sql": {
+          "type": "SELECT",
+          "columns": [
+            {
+              "table": "images",
+              "column": "*"
+            }
+          ],
+          "table": {
+            "name": "images"
+          },
+          "joins": [],
+          "query": "SELECT *\nFROM images",
+          "params": []
+        }
+      },
+      "output": true,
+      "meta": [
+        {
+          "name": "id",
+          "type": "text"
+        },
+        {
+          "name": "image",
+          "type": "text"
+        },
+        {
+          "name": "description",
+          "type": "text"
+        },
+        {
+          "name": "category",
+          "type": "text"
+        },
+        {
+          "name": "author",
+          "type": "text"
+        },
+        {
+          "name": "date",
+          "type": "date"
+        }
+      ],
+      "type": "dbconnector_select",
+      "outputType": "array"
+    }
+  }
+}
