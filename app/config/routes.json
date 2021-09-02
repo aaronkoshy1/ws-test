@@ -15,6 +15,11 @@
       "path": "/posts",
       "page": "posts",
       "layout": "main"
+    },
+    {
+      "path": "/login",
+      "page": "login",
+      "layout": "main"
     }
   ]
 }
