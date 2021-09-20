@@ -10,66 +10,363 @@
   },
   "schema": {
     "tables": {
-      "images": {
+      "Contacts": {
         "db": {
           "engine": "InnoDB",
           "schema": "webapp",
-          "collation": "utf8_general_ci"
+          "collation": "utf8mb4_0900_ai_ci"
         },
         "columns": {
-          "id": {
+          "first_name": {
+            "db": {
+              "type": "string",
+              "maxLength": 20,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "middle_name": {
+            "db": {
+              "type": "string",
+              "maxLength": 20,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "last_name": {
+            "db": {
+              "type": "string",
+              "maxLength": 45,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "phone": {
+            "db": {
+              "type": "string",
+              "maxLength": 14,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "email": {
+            "db": {
+              "type": "string",
+              "maxLength": 225,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "Users",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        }
+      },
+      "Block_list": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8mb4_0900_ai_ci"
+        },
+        "columns": {
+          "participants_id": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "created_at": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "Users",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        }
+      },
+      "Conversation": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8mb4_0900_ai_ci"
+        },
+        "columns": {
+          "title": {
+            "db": {
+              "type": "string",
+              "maxLength": 40,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "creator_id": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "channel_id": {
+            "db": {
+              "type": "string",
+              "maxLength": 45,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "created_at": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "updated_at": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "Users",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        }
+      },
+      "Reports": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8mb4_0900_ai_ci"
+        },
+        "columns": {
+          "participants": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "report_type": {
+            "db": {
+              "type": "string",
+              "maxLength": 45,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "notes": {
+            "db": {
+              "type": "text",
+              "maxLength": 65535,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "created_at": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "Users",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        }
+      },
+      "Messages": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8mb4_0900_ai_ci"
+        },
+        "columns": {
+          "sender_id": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "participants_id": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "message_type": {
+            "db": {
+              "type": "enum",
+              "maxLength": 0,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "message": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "attachment_thumb_url": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "attachment_url": {
+            "db": {
+              "type": "string",
+              "maxLength": 255,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "created_at": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "Users",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "conversation_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "conversation_id",
+              "inTable": "Participants",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        }
+      },
+      "Devices": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8mb4_0900_ai_ci"
+        },
+        "columns": {
+          "device_id": {
             "db": {
               "type": "increments",
               "primary": true,
               "nullable": false
             }
           },
-          "image": {
+          "type": {
+            "db": {
+              "type": "enum",
+              "maxLength": 0,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "device_token": {
             "db": {
               "type": "string",
-              "maxLength": 50,
+              "maxLength": 120,
               "primary": false,
-              "nullable": true
-            }
-          },
-          "description": {
-            "db": {
-              "type": "text",
-              "maxLength": 65535,
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "category": {
-            "db": {
-              "type": "string",
-              "maxLength": 12,
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "author": {
-            "db": {
-              "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "date": {
-            "db": {
-              "type": "date",
-              "primary": false,
-              "nullable": true
+              "nullable": false
             }
           }
         }
       },
-      "users": {
+      "Participants": {
         "db": {
           "engine": "InnoDB",
           "schema": "webapp",
-          "collation": "utf8_general_ci"
+          "collation": "utf8mb4_0900_ai_ci"
+        },
+        "columns": {
+          "conversation_id": {
+            "db": {
+              "type": "increments",
+              "primary": true,
+              "nullable": false
+            }
+          },
+          "type": {
+            "db": {
+              "type": "enum",
+              "maxLength": 0,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "Users",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        }
+      },
+      "Users": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8mb4_0900_ai_ci"
         },
         "columns": {
           "user_id": {
@@ -79,155 +376,85 @@
               "nullable": false
             }
           },
-          "first_name": {
+          "phone": {
             "db": {
               "type": "string",
-              "maxLength": 50,
+              "maxLength": 16,
               "primary": false,
-              "nullable": true
-            }
-          },
-          "last_name": {
-            "db": {
-              "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "gender": {
-            "db": {
-              "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
+              "nullable": false
             }
           },
           "email": {
             "db": {
               "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "company": {
-            "db": {
-              "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "avatar": {
-            "db": {
-              "type": "string",
-              "maxLength": 100,
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "pass_hash": {
-            "db": {
-              "type": "string",
               "maxLength": 255,
               "primary": false,
-              "nullable": true
+              "nullable": false
             }
           },
-          "pass_salt": {
+          "password": {
             "db": {
               "type": "string",
-              "maxLength": 15,
+              "maxLength": 40,
               "primary": false,
-              "nullable": true
+              "nullable": false
             }
           },
-          "role": {
+          "first_name": {
             "db": {
               "type": "string",
-              "maxLength": 25,
+              "maxLength": 20,
               "primary": false,
-              "nullable": true
+              "nullable": false
             }
           },
-          "most_recent_login": {
+          "last_name": {
+            "db": {
+              "type": "string",
+              "maxLength": 20,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "middle_name": {
+            "db": {
+              "type": "string",
+              "maxLength": 20,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "is_active": {
+            "db": {
+              "type": "boolean",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "is_reported": {
+            "db": {
+              "type": "boolean",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "is_blocked": {
+            "db": {
+              "type": "boolean",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "updated_at": {
             "db": {
               "type": "datetime",
               "primary": false,
-              "nullable": true
-            }
-          }
-        }
-      },
-      "cars": {
-        "db": {
-          "engine": "InnoDB",
-          "schema": "webapp",
-          "collation": "utf8_general_ci"
-        },
-        "columns": {
-          "id": {
-            "db": {
-              "type": "increments",
-              "primary": true,
               "nullable": false
             }
           },
-          "make": {
+          "created_at": {
             "db": {
-              "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "model": {
-            "db": {
-              "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
-            }
-          },
-          "year": {
-            "db": {
-              "type": "string",
-              "maxLength": 50,
-              "primary": false,
-              "nullable": true
-            }
-          }
-        }
-      },
-      "countries": {
-        "db": {
-          "engine": "InnoDB",
-          "schema": "webapp",
-          "collation": "utf8_general_ci"
-        },
-        "columns": {
-          "id": {
-            "db": {
-              "type": "increments",
-              "primary": true,
-              "nullable": false
-            }
-          },
-          "country_code": {
-            "db": {
-              "type": "string",
-              "default": "",
-              "maxLength": 2,
-              "primary": false,
-              "nullable": false
-            }
-          },
-          "country_name": {
-            "db": {
-              "type": "string",
-              "default": "",
-              "maxLength": 100,
+              "type": "datetime",
               "primary": false,
               "nullable": false
             }
