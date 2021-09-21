@@ -10,6 +10,139 @@
   },
   "schema": {
     "tables": {
+      "Services": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8mb4_0900_ai_ci"
+        },
+        "columns": {
+          "information": {
+            "db": {
+              "type": "string",
+              "maxLength": 120,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "service_title": {
+            "db": {
+              "type": "string",
+              "maxLength": 40,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "details": {
+            "db": {
+              "type": "string",
+              "maxLength": 240,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "price": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": false
+            }
+          }
+        }
+      },
+      "Events": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8mb4_0900_ai_ci"
+        },
+        "columns": {
+          "e-type": {
+            "db": {
+              "type": "string",
+              "maxLength": 40,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "location": {
+            "db": {
+              "type": "string",
+              "maxLength": 40,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "Users",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        }
+      },
+      "Posts": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8mb4_0900_ai_ci"
+        },
+        "columns": {
+          "p-type": {
+            "db": {
+              "type": "enum",
+              "maxLength": 0,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "time": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "location": {
+            "db": {
+              "type": "string",
+              "maxLength": 120,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "is_liked": {
+            "db": {
+              "type": "boolean",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "is_saved": {
+            "db": {
+              "type": "boolean",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "Users",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        }
+      },
       "Contacts": {
         "db": {
           "engine": "InnoDB",

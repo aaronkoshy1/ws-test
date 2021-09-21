@@ -34,13 +34,11 @@ CREATE TABLE `Block_list` (
 
 
 CREATE TABLE `Contacts` (
-  `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `first_name` varchar(20) NOT NULL,
   `middle_name` varchar(20) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `phone` varchar(14) NOT NULL,
-  `email` varchar(225) NOT NULL,
-  PRIMARY KEY (`user_id`)
+  `email` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `Conversation` (
@@ -56,6 +54,15 @@ CREATE TABLE `Devices` (
   `device_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `type` enum('') NOT NULL,
   `device_token` varchar(120) NOT NULL,
+  PRIMARY KEY (`device_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `Posts` (
+  `p-type` enum('') NOT NULL,
+  `time` int(11) NOT NULL
+  `location` varchar(120) NOT NULL,
+  `is_liked` tinyint(1) NOT NULL,
+  `is_saved` tinyint(1) NOT NULL,
   PRIMARY KEY (`device_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
