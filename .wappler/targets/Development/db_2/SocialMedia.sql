@@ -59,12 +59,23 @@ CREATE TABLE `Devices` (
 
 CREATE TABLE `Posts` (
   `p-type` enum('') NOT NULL,
-  `time` int(11) NOT NULL
+  `time` int(11) NOT NULL,
   `location` varchar(120) NOT NULL,
   `is_liked` tinyint(1) NOT NULL,
-  `is_saved` tinyint(1) NOT NULL,
-  PRIMARY KEY (`device_id`)
+  `is_saved` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `Events` (
+  `e-type` varchar(40)NOT NULL,
+  `location` varchar(40) NOT NULL
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `Services` (
+  `information` varchar(120)NOT NULL,
+  `service_title` varchar(40) NOT NULL,
+  `detail` varchar(240) NOT NULL,
+  `price` int(11) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 CREATE TABLE `Messages` (

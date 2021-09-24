@@ -10,6 +10,74 @@
   },
   "schema": {
     "tables": {
+      "Conversation": {
+        "db": {
+          "engine": "InnoDB",
+          "schema": "webapp",
+          "collation": "utf8mb4_0900_ai_ci"
+        },
+        "columns": {
+          "title": {
+            "db": {
+              "type": "string",
+              "maxLength": 40,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "creator_id": {
+            "db": {
+              "type": "integer",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "channel_id": {
+            "db": {
+              "type": "string",
+              "maxLength": 45,
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "created_at": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "updated_at": {
+            "db": {
+              "type": "datetime",
+              "primary": false,
+              "nullable": false
+            }
+          },
+          "user_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "user_id",
+              "inTable": "Users",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          },
+          "conversation_id": {
+            "db": {
+              "type": "reference",
+              "primary": false,
+              "nullable": true,
+              "references": "conversation_id",
+              "inTable": "Participants",
+              "onUpdate": "CASCADE",
+              "onDelete": "CASCADE"
+            }
+          }
+        }
+      },
       "Services": {
         "db": {
           "engine": "InnoDB",
@@ -218,63 +286,6 @@
             }
           },
           "created_at": {
-            "db": {
-              "type": "datetime",
-              "primary": false,
-              "nullable": false
-            }
-          },
-          "user_id": {
-            "db": {
-              "type": "reference",
-              "primary": false,
-              "nullable": true,
-              "references": "user_id",
-              "inTable": "Users",
-              "onUpdate": "CASCADE",
-              "onDelete": "CASCADE"
-            }
-          }
-        }
-      },
-      "Conversation": {
-        "db": {
-          "engine": "InnoDB",
-          "schema": "webapp",
-          "collation": "utf8mb4_0900_ai_ci"
-        },
-        "columns": {
-          "title": {
-            "db": {
-              "type": "string",
-              "maxLength": 40,
-              "primary": false,
-              "nullable": false
-            }
-          },
-          "creator_id": {
-            "db": {
-              "type": "integer",
-              "primary": false,
-              "nullable": false
-            }
-          },
-          "channel_id": {
-            "db": {
-              "type": "string",
-              "maxLength": 45,
-              "primary": false,
-              "nullable": false
-            }
-          },
-          "created_at": {
-            "db": {
-              "type": "datetime",
-              "primary": false,
-              "nullable": false
-            }
-          },
-          "updated_at": {
             "db": {
               "type": "datetime",
               "primary": false,
